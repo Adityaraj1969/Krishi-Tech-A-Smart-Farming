@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KrishiTech — India's Smart Agriculture Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-leaf">🌿</span>
+      <span class="logo-text">Krishi<em>Tech</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#natural-farming">Crops</a></li>
+      <li><a href="#horticulture">Horticulture</a></li>
+      <li><a href="#modern-tech">Modern Tech</a></li>
+      <li><a href="#diseases">Diseases</a></li>
+      <li><a href="#smart-search">AI Search</a></li>
+    </ul>
+    <button class="nav-cta" onclick="scrollToSearch()">Ask AI</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇳 India's Agricultural Knowledge Platform</div>
+    <h1 class="hero-title">
+      From Seed<br>
+      <em>to Harvest</em><br>
+      Guided by Science
+    </h1>
+    <p class="hero-sub">Comprehensive farming intelligence covering every crop, every region, every season — powered by traditional wisdom and modern agronomy.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToSearch()">🔍 Search Any Crop</button>
+      <button class="btn-ghost" onclick="document.getElementById('natural-farming').scrollIntoView({behavior:'smooth'})">Explore Crops →</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Crops Covered</span></div>
+      <div class="stat"><span class="stat-num">36</span><span class="stat-label">States & UTs</span></div>
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Diseases Detected</span></div>
+      <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Powered Advice</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="crop-wheel">
+      <div class="wheel-ring outer-ring">
+        <div class="crop-item" style="--i:0">🌾</div>
+        <div class="crop-item" style="--i:1">🌽</div>
+        <div class="crop-item" style="--i:2">🥭</div>
+        <div class="crop-item" style="--i:3">🍅</div>
+        <div class="crop-item" style="--i:4">🌻</div>
+        <div class="crop-item" style="--i:5">🍋</div>
+        <div class="crop-item" style="--i:6">🥜</div>
+        <div class="crop-item" style="--i:7">🌿</div>
+      </div>
+      <div class="wheel-center">
+        <span class="center-icon">🌱</span>
+        <span class="center-text">KrishiTech</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- QUICK SEARCH BAR -->
+<section class="quick-search-bar">
+  <div class="qsb-inner">
+    <input type="text" id="quickSearchInput" placeholder="Type any crop name, e.g. 'Rice', 'Wheat', 'Mango'..." class="qsb-input">
+    <button class="qsb-btn" onclick="quickSearch()">Search</button>
+  </div>
+</section>
+
+<!-- NATURAL FARMING SECTION -->
+<section class="section" id="natural-farming">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🌾 Natural Farming</div>
+      <h2 class="section-title">Crop Categories</h2>
+      <p class="section-desc">India's agricultural diversity spans four major seasons and countless varieties. Explore each category for detailed cultivation guides.</p>
+    </div>
+
+    <div class="season-tabs">
+      <button class="stab active" data-season="kharif" onclick="showSeason('kharif',this)">Kharif</button>
+      <button class="stab" data-season="rabi" onclick="showSeason('rabi',this)">Rabi</button>
+      <button class="stab" data-season="zaid" onclick="showSeason('zaid',this)">Zaid</button>
+      <button class="stab" data-season="cash" onclick="showSeason('cash',this)">Cash Crops</button>
+      <button class="stab" data-season="flowers" onclick="showSeason('flowers',this)">Flowers</button>
+      <button class="stab" data-season="plantation" onclick="showSeason('plantation',this)">Tea & Coffee</button>
+    </div>
+
+    <div class="season-info" id="season-info-kharif">
+      <div class="season-meta">
+        <span class="season-badge kharif-badge">☀️ June – October</span>
+        <p>Kharif crops are sown at the beginning of the monsoon season. They require warm temperatures and abundant rainfall.</p>
+      </div>
+    </div>
+    <div class="season-info hidden" id="season-info-rabi">
+      <div class="season-meta">
+        <span class="season-badge rabi-badge">❄️ October – March</span>
+        <p>Rabi crops are sown in winter after monsoon rains. They need cool weather for growth and warm dry weather at maturity.</p>
+      </div>
+    </div>
+    <div class="season-info hidden" id="season-info-zaid">
+      <div class="season-meta">
+        <span class="season-badge zaid-badge">🌸 March – June</span>
+        <p>Zaid crops grow between Rabi and Kharif seasons. These short-duration crops are grown on river beds and irrigated land.</p>
+      </div>
+    </div>
+    <div class="season-info hidden" id="season-info-cash">
+      <div class="season-meta">
+        <span class="season-badge cash-badge">💰 Commercial Crops</span>
+        <p>Cash crops are grown primarily for commercial sale rather than subsistence. They form the backbone of India's textile and export industry.</p>
+      </div>
+    </div>
+    <div class="season-info hidden" id="season-info-flowers">
+      <div class="season-meta">
+        <span class="season-badge flowers-badge">🌸 Floriculture</span>
+        <p>India is a major producer of cut flowers and loose flowers. Floriculture is a rapidly growing segment of horticulture.</p>
+      </div>
+    </div>
+    <div class="season-info hidden" id="season-info-plantation">
+      <div class="season-meta">
+        <span class="season-badge plantation-badge">☕ Plantation Crops</span>
+        <p>Tea and Coffee are among India's most important plantation crops, grown primarily in the hilly regions of Assam, Darjeeling, and the Western Ghats.</p>
+      </div>
+    </div>
+
+    <div class="crops-grid" id="crops-grid">
+      <!-- Dynamically populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- HORTICULTURE -->
+<section class="section section-dark" id="horticulture">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🍎 Horticulture</div>
+      <h2 class="section-title">Fruits & Orchards</h2>
+      <p class="section-desc">India is the world's second-largest producer of fruits. From tropical mangoes to temperate apples, explore comprehensive cultivation guides.</p>
+    </div>
+    <div class="horti-grid">
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Mango in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#f9a825,#f57f17)"><span>🥭</span></div>
+        <div class="horti-info"><h4>Mango</h4><p>Mangifera indica</p><span class="horti-tag">Tropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Orange in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#ff9800,#e65100)"><span>🍊</span></div>
+        <div class="horti-info"><h4>Orange</h4><p>Citrus sinensis</p><span class="horti-tag">Subtropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Apple in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#ef5350,#b71c1c)"><span>🍎</span></div>
+        <div class="horti-info"><h4>Apple</h4><p>Malus domestica</p><span class="horti-tag">Temperate</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Banana in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#ffee58,#f9a825)"><span>🍌</span></div>
+        <div class="horti-info"><h4>Banana</h4><p>Musa acuminata</p><span class="horti-tag">Tropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Guava in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#aed581,#558b2f)"><span>🍐</span></div>
+        <div class="horti-info"><h4>Guava</h4><p>Psidium guajava</p><span class="horti-tag">Tropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Papaya in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#ffcc02,#ff6f00)"><span>🍈</span></div>
+        <div class="horti-info"><h4>Papaya</h4><p>Carica papaya</p><span class="horti-tag">Tropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Pineapple in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#ffd600,#ff8f00)"><span>🍍</span></div>
+        <div class="horti-info"><h4>Pineapple</h4><p>Ananas comosus</p><span class="horti-tag">Tropical</span></div>
+      </div>
+      <div class="horti-card" onclick="askAI('Provide complete horticulture cultivation guide for Kiwi in India')">
+        <div class="horti-img" style="background:linear-gradient(135deg,#8bc34a,#33691e)"><span>🥝</span></div>
+        <div class="horti-info"><h4>Kiwi</h4><p>Actinidia deliciosa</p><span class="horti-tag">Temperate</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODERN TECHNIQUES -->
+<section class="section" id="modern-tech">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🔬 Modern Agriculture</div>
+      <h2 class="section-title">Advanced Farming Techniques</h2>
+      <p class="section-desc">Soil-less and technology-driven farming systems revolutionizing Indian agriculture for the 21st century.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card" onclick="askAI('Explain Hydroponics farming technique in India — setup, crops, cost, benefits, challenges and how to start')">
+        <div class="tech-icon">💧</div>
+        <h3>Hydroponics</h3>
+        <p>Grow crops in nutrient-rich water without soil. Ideal for urban farming, leafy greens, and herbs with 90% less water usage.</p>
+        <div class="tech-tags">
+          <span>No Soil</span><span>Water Efficient</span><span>Year-Round</span>
+        </div>
+        <button class="tech-btn">Explore →</button>
+      </div>
+      <div class="tech-card featured" onclick="askAI('Explain Aeroponics farming technique in India — setup, crops, cost, benefits, challenges and how to start')">
+        <div class="tech-icon">🌬️</div>
+        <h3>Aeroponics</h3>
+        <p>Roots suspended in air and misted with nutrients. Fastest growth rates, highest yields, and minimal water consumption.</p>
+        <div class="tech-tags">
+          <span>Fastest Growth</span><span>95% Water Saved</span><span>Premium Yields</span>
+        </div>
+        <button class="tech-btn">Explore →</button>
+      </div>
+      <div class="tech-card" onclick="askAI('Explain Aquaponics farming technique in India — setup, crops, fish varieties, cost, benefits, challenges and how to start')">
+        <div class="tech-icon">🐟</div>
+        <h3>Aquaponics</h3>
+        <p>A symbiotic system combining fish farming and plant cultivation. Fish waste fertilizes plants; plants purify water for fish.</p>
+        <div class="tech-tags">
+          <span>Dual Yield</span><span>Eco-Friendly</span><span>Circular System</span>
+        </div>
+        <button class="tech-btn">Explore →</button>
+      </div>
+    </div>
+
+    <div class="practices-grid">
+      <h3 class="practices-title">🌟 Best Practices</h3>
+      <div class="practice-cards">
+        <div class="practice-card" onclick="askAI('Explain best soil management practices for Indian farmers including soil testing, amendments, organic matter, micronutrients and soil health improvement')">
+          <span class="pc-icon">🪨</span>
+          <h4>Soil Management</h4>
+          <p>Soil testing, pH management, organic amendments, micronutrient balance.</p>
+        </div>
+        <div class="practice-card" onclick="askAI('Explain crop management best practices in India including crop rotation, intercropping, integrated pest management, and harvest optimization')">
+          <span class="pc-icon">🌱</span>
+          <h4>Crop Management</h4>
+          <p>Rotation, intercropping, integrated pest management, harvest optimization.</p>
+        </div>
+        <div class="practice-card" onclick="askAI('Explain weather integration for farming in India — how to use weather forecasts, seasonal predictions, and climate data for crop planning')">
+          <span class="pc-icon">🌦️</span>
+          <h4>Weather Integration</h4>
+          <p>Seasonal forecasting, monsoon planning, frost protection, drought management.</p>
+        </div>
+        <div class="practice-card" onclick="askAI('Explain geographical region-wise crop suitability across India — which crops grow best in which Indian states and agro-climatic zones')">
+          <span class="pc-icon">🗺️</span>
+          <h4>Regional Suitability</h4>
+          <p>Agro-climatic zones, state-wise crop suitability, microclimate planning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISEASES SECTION -->
+<section class="section section-dark" id="diseases">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🔬 Plant Health</div>
+      <h2 class="section-title">Diseases Detection & Prevention</h2>
+      <p class="section-desc">Identify and treat crop diseases naturally. We emphasize herbal, ayurvedic, and organic solutions over chemical pesticides.</p>
+    </div>
+    <div class="disease-search-box">
+      <input type="text" id="diseaseInput" placeholder="Enter crop name or disease name, e.g. 'Rice blast', 'Wheat rust', 'Cotton wilt'..." class="disease-input">
+      <button class="disease-btn" onclick="searchDisease()">Diagnose & Treat</button>
+    </div>
+    <div class="disease-categories">
+      <button class="dcategory-btn" onclick="askAI('List and explain common fungal diseases in crops in India, their symptoms, and organic/herbal prevention methods')">🍄 Fungal Diseases</button>
+      <button class="dcategory-btn" onclick="askAI('List and explain common bacterial diseases in crops in India, their symptoms, and organic/herbal prevention methods')">🦠 Bacterial Diseases</button>
+      <button class="dcategory-btn" onclick="askAI('List and explain common viral diseases in crops in India, their symptoms, and organic/herbal prevention methods')">🧬 Viral Diseases</button>
+      <button class="dcategory-btn" onclick="askAI('List and explain common pest attacks in Indian crops, their identification, and organic/natural pest management methods')">🐛 Pest Attacks</button>
+      <button class="dcategory-btn" onclick="askAI('Explain nutritional deficiency diseases in crops — nitrogen, phosphorus, potassium, zinc, iron deficiencies with organic remedies')">🌿 Nutritional Deficiency</button>
+    </div>
+
+    <!-- CHEMICAL ALTERNATIVES -->
+    <div class="alt-chemicals">
+      <h3 class="alt-title">🌿 Natural Alternatives to Chemicals</h3>
+      <div class="alt-grid">
+        <div class="alt-card" onclick="askAI('List all natural and organic alternatives to chemical fertilizers used in Indian farming — compost, vermicompost, green manure, biofertilizers with application methods')">
+          <div class="alt-icon">🌱</div>
+          <h4>Natural Fertilizers</h4>
+          <p>Compost, vermicompost, green manure, biofertilizers, neem cake, bone meal — complete organic nutrition for crops.</p>
+          <span class="alt-tag safe">✅ Safe</span>
+        </div>
+        <div class="alt-card" onclick="askAI('List all natural and organic alternatives to chemical pesticides for Indian farmers — neem oil, garlic spray, diatomaceous earth, biological controls with recipes')">
+          <div class="alt-icon">🛡️</div>
+          <h4>Natural Pesticides</h4>
+          <p>Neem oil, garlic spray, pyrethrin, diatomaceous earth, Bt spray — effective pest control without toxic residues.</p>
+          <span class="alt-tag safe">✅ Safe</span>
+        </div>
+        <div class="alt-card" onclick="askAI('List all natural and organic alternatives to chemical weedicides and herbicides for Indian farmers with application methods and effectiveness')">
+          <div class="alt-icon">🌾</div>
+          <h4>Natural Weedicides</h4>
+          <p>Mulching, cover crops, flame weeding, vinegar solution, corn gluten — weed management without chemical herbicides.</p>
+          <span class="alt-tag safe">✅ Safe</span>
+        </div>
+        <div class="alt-card" onclick="askAI('Explain Ayurvedic and herbal plant protection methods used in traditional Indian farming — panchagavya, beejamrutha, jeevamrutha, agnihastra recipes and applications')">
+          <div class="alt-icon">🌺</div>
+          <h4>Ayurvedic Remedies</h4>
+          <p>Panchagavya, Beejamrutha, Jeevamrutha, Agnihastra — traditional Vedic formulations for comprehensive crop health.</p>
+          <span class="alt-tag ayurvedic">🌿 Ayurvedic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART AI SEARCH -->
+<section class="section" id="smart-search">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🤖 AI Intelligence</div>
+      <h2 class="section-title">Smart Agricultural Search</h2>
+      <p class="section-desc">Three powerful AI-powered search modes to get exactly the information you need.</p>
+    </div>
+
+    <div class="search-tabs">
+      <button class="search-tab active" onclick="switchSearchTab('crop', this)">🌾 Search by Crop</button>
+      <button class="search-tab" onclick="switchSearchTab('soil', this)">🪨 Search by Soil</button>
+      <button class="search-tab" onclick="switchSearchTab('region', this)">🗺️ Search by Region</button>
+    </div>
+
+    <!-- CROP SEARCH -->
+    <div class="search-panel active" id="panel-crop">
+      <div class="search-box-main">
+        <div class="sbox-icon">🌾</div>
+        <input type="text" id="cropSearchInput" placeholder="Type crop name — e.g. Rice, Wheat, Tomato, Marigold, Tea..." class="sbox-input">
+        <button class="sbox-btn" onclick="searchCrop()">Get Full Guide</button>
+      </div>
+      <div class="search-suggestions">
+        <span>Popular:</span>
+        <button onclick="setAndSearch('Rice')">Rice</button>
+        <button onclick="setAndSearch('Wheat')">Wheat</button>
+        <button onclick="setAndSearch('Cotton')">Cotton</button>
+        <button onclick="setAndSearch('Mango')">Mango</button>
+        <button onclick="setAndSearch('Tomato')">Tomato</button>
+        <button onclick="setAndSearch('Tea')">Tea</button>
+        <button onclick="setAndSearch('Marigold')">Marigold</button>
+      </div>
+    </div>
+
+    <!-- SOIL SEARCH -->
+    <div class="search-panel" id="panel-soil">
+      <div class="search-box-main">
+        <div class="sbox-icon">🪨</div>
+        <input type="text" id="soilSearchInput" placeholder="Describe your soil — e.g. 'black clay soil, pH 6.5, low nitrogen', 'sandy loam'..." class="sbox-input">
+        <button class="sbox-btn" onclick="searchSoil()">Find Suitable Crops</button>
+      </div>
+      <div class="search-suggestions">
+        <span>Try:</span>
+        <button onclick="setSoilAndSearch('Black cotton soil')">Black Cotton Soil</button>
+        <button onclick="setSoilAndSearch('Alluvial soil')">Alluvial Soil</button>
+        <button onclick="setSoilAndSearch('Red laterite soil')">Red Laterite</button>
+        <button onclick="setSoilAndSearch('Sandy loam soil')">Sandy Loam</button>
+        <button onclick="setSoilAndSearch('Mountain acidic soil')">Mountain Acidic</button>
+      </div>
+    </div>
+
+    <!-- REGION SEARCH -->
+    <div class="search-panel" id="panel-region">
+      <div class="region-selectors">
+        <div class="region-select-group">
+          <label>Select State / UT</label>
+          <select id="stateSelect" class="region-select" onchange="loadDistricts()">
+            <option value="">— Choose State —</option>
+            {% for state in states_data.keys() %}
+            <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="region-select-group">
+          <label>Select District</label>
+          <select id="districtSelect" class="region-select">
+            <option value="">— Choose District —</option>
+          </select>
+        </div>
+        <button class="sbox-btn region-btn" onclick="searchRegion()">Get Regional Guide</button>
+      </div>
+      <p class="region-hint">Or type directly: <input type="text" id="regionTextInput" placeholder="e.g. Patna Bihar, Wayanad Kerala..." class="region-text-input"> <button class="mini-btn" onclick="searchRegionText()">Search</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- AI RESPONSE MODAL -->
+<div class="modal-overlay" id="aiModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title-area">
+        <span class="modal-icon">🤖</span>
+        <h3 id="modalTitle">KrishiTech AI</h3>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-loading">
+        <div class="loading-spinner"></div>
+        <p>Consulting agricultural knowledge base...</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-copy-btn" onclick="copyModalContent()">📋 Copy Response</button>
+      <button class="modal-ask-btn" onclick="askFollowUp()">💬 Ask Follow-up</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-leaf">🌿</span>
+      <span class="logo-text">Krishi<em>Tech</em></span>
+      <p>India's comprehensive agricultural knowledge platform, combining traditional wisdom with modern science.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Crop Types</h5>
+      <a href="#" onclick="showSeason('kharif', null); return false;">Kharif Crops</a>
+      <a href="#" onclick="showSeason('rabi', null); return false;">Rabi Crops</a>
+      <a href="#" onclick="showSeason('zaid', null); return false;">Zaid Crops</a>
+      <a href="#" onclick="showSeason('cash', null); return false;">Cash Crops</a>
+      <a href="#horticulture">Horticulture</a>
+    </div>
+    <div class="footer-links">
+      <h5>Knowledge</h5>
+      <a href="#modern-tech">Modern Techniques</a>
+      <a href="#diseases">Disease Guide</a>
+      <a href="#smart-search">AI Search</a>
+    </div>
+    <div class="footer-links">
+      <h5>Regions</h5>
+      <a href="#" onclick="setRegionAndSearch('Punjab'); return false;">Punjab</a>
+      <a href="#" onclick="setRegionAndSearch('Bihar'); return false;">Bihar</a>
+      <a href="#" onclick="setRegionAndSearch('Maharashtra'); return false;">Maharashtra</a>
+      <a href="#" onclick="setRegionAndSearch('Kerala'); return false;">Kerala</a>
+      <a href="#smart-search">All Regions</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 KrishiTech · Empowering Indian Farmers with Knowledge</p>
+    <p class="footer-disc">Information provided is for educational purposes. Always consult local agricultural experts and KVK for region-specific advice.</p>
+  </div>
+</footer>
+
+<!-- API config injected by Flask — never hard-code your key here -->
+<script>
+  window.KRISHI_API_KEY = "{{ api_key }}";
+</script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
