@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.0.3-lightgrey.svg)](https://flask.palletsprojects.com/)
 [![Render](https://img.shields.io/badge/Render-Deployed-success.svg)](https://krishi-tech-a-smart-farming.onrender.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > **Live Demo:** [https://krishi-tech-a-smart-farming.onrender.com/](https://krishi-tech-a-smart-farming.onrender.com/)
 
