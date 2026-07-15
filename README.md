@@ -1,5 +1,12 @@
 # 🌿 KrishiTech — India's Smart Agriculture Portal
 
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.0.3-lightgrey.svg)](https://flask.palletsprojects.com/)
+[![Render](https://img.shields.io/badge/Render-Deployed-success.svg)](https://krishi-tech-a-smart-farming.onrender.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Live Demo:** [https://krishi-tech-a-smart-farming.onrender.com/](https://krishi-tech-a-smart-farming.onrender.com/)
+
 > **From Seed to Harvest, Guided by Science**
 > A comprehensive AI-powered agricultural knowledge platform built for Indian farmers, covering every crop, every region, and every season — with traditional wisdom and modern agronomy.
 
@@ -119,13 +126,16 @@ Translation is powered by Groq (primary) with Gemini as fallback, preserving all
 
 ## Project Structure
 
-```
+```text
 Capstone-KrishiTech/
 │
 ├── app.py                  # Flask backend — all routes, AI proxies, TTS
-├── requirements.txt        # Python dependencies
+├── data.py                 # Extracted constants (CROP_DATA, STATES_DATA)
+├── requirements.txt        # Python dependencies (includes gunicorn for prod)
 ├── .env                    # API keys (not committed to git)
 ├── .env.example            # Template for .env
+├── .gitignore              # Ignored files for version control
+├── .gitattributes          # Line ending normalization
 │
 ├── templates/
 │   └── index.html          # Single-page application (Jinja2 template)
